@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script src="ramjet.js"></script>
+<title>Song Storyboard</title>
+</head>
+<style>
+	body {
+		margin: 0;
+
+	}
+	#container {
+		display: flex;
+		flex-flow: row wrap;
+		width: 100vw;
+		height: 100vh;
+		background: #000;
+		overflow: hidden;
+	}
+	.image {
+		margin: auto;
+		width: 250px;
+		height: 250px;
+	}
+	.blue {
+		background-color: #0000ff;
+	}
+	.gray {
+		background-color: #ececec;
+	}
+	.red {
+		background-color: #00ffff;
+	}
+	.purple {
+		background-color: #ff00ff;
+	}
+	.focused {
+	}
+</style>
+<body>
+<div id="container">
+	<div class="image blue"></div>
+	<div class="image gray"></div>
+	<div class="image red"></div>
+	<div class="image blue focused"></div>
+	<div class="image gray"></div>
+	<div class="image green"></div>
+	<div class="image purple"></div>
+	<div class="image green"></div>
+	<div class="image blue"></div>
+</div>
+<script>
+
+$(".focused").animate({		
+	height: $(".focused").height() * 1.5 + "px",
+    width:  $(".focused").width()  * 1.5 + "px"
+});
+
+$(".image").click(function (){
+	var old = $(".focused");
+	old.removeClass("focused").animate({		
+	height: old.height() * 2/3 + "px",
+    width:  old.width()  * 2/3 + "px"
+});
+
+	$(this).addClass("focused").animate({
+		height: $(".focused").height() * 1.5 + "px",
+    	width:  $(".focused").width()  * 1.5 + "px"
+	});
+});
+
+
+//$("div.image").each(function(i, obj){
+    // var height = $(obj).height();
+    // var width  = $(obj).width();
+
+    // $(obj).hover( function(e) {
+    // 	$(this).animate({
+    // 		height: height * 1.5 + "px",
+    //         width:  width  * 1.5 + "px"
+    //   	});
+
+    // }, function(e) {
+    // 	$(this).animate({
+    // 		height: height + "px",
+    //         width:  width  + "px"
+    // 	});
+    // });
+//});
+</script>
+</body>
+</html>

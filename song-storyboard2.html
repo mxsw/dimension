@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+<script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<title>Song Storyboard</title>
+</head>
+<style>
+	body {
+		margin: 0;
+	}
+	#container {
+/*		width: 100vw;
+		height: 100vh;*/
+		background: #000;
+	}
+	.image {
+		padding: 0;
+		width:  300px;
+		height: 300px;
+		margin: 10px 10px 10px 10px;
+	}
+	.blue {
+		background-color: #0000ff;
+	}
+	.gray {
+		background-color: #ececec;
+	}
+	.green {
+		background-color: #00ff00;
+	}
+	.red {
+		background-color: #00ffff;
+	}
+	.purple {
+		background-color: #ff00ff;
+	}
+	.row {
+		overflow-x: hidden;
+	}
+</style>
+<body>
+<div id="container">
+	<div class="row">
+		<div class="col-md-3 image gray focused"></div>
+		<div class="col-md-3 image blue"></div>
+		<div class="col-md-3 image green"></div>
+		<div class="col-md-3 image red"></div>
+		<div class="col-md-3 image purple"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 image gray"></div>
+		<div class="col-md-3 image blue"></div>
+		<div class="col-md-3 image green"></div>
+		<div class="col-md-3 image red"></div>
+		<div class="col-md-3 image purple"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 image gray"></div>
+		<div class="col-md-3 image blue"></div>
+		<div class="col-md-3 image green"></div>
+		<div class="col-md-3 image red"></div>
+		<div class="col-md-3 image purple"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 image gray"></div>
+		<div class="col-md-3 image blue"></div>
+		<div class="col-md-3 image green"></div>
+		<div class="col-md-3 image red"></div>
+		<div class="col-md-3 image purple"></div>
+	</div>
+	<div class="row">
+		<div class="col-md-3 image gray"></div>
+		<div class="col-md-3 image blue"></div>
+		<div class="col-md-3 image green"></div>
+		<div class="col-md-3 image red"></div>
+		<div class="col-md-3 image purple"></div>
+	</div>
+</div>
+<script>
+var height;
+var width;
+
+$(document).ready(function() {
+	var div = $(".focused");
+	height = div.height();
+	width  = div.width();
+
+	// Enlarge div in focus
+	$(".focused").animate({		
+		height: $(".focused").height() * 1.5 + "px",
+    	width:  $(".focused").width()  * 1.5 + "px"
+	});
+
+	// When an image is clicked, shrink old elem
+	// leaving focus, enlarge new elem coming into focus
+	$(".image").click(function (){
+		// $this.is($(".focused")) {
+		// 	$(this).toggleClass("focused");
+		// } else {
+
+			// Shrink old elem
+			var old = $(".focused");
+			old.removeClass("focused").animate({
+				height: old.height() * 2/3 + "px",
+		    	width:  old.width()  * 2/3 + "px"
+			}, 400);
+
+			$(this).addClass("focused");
+
+			// Enlarge new elem
+			setTimeout(function () {
+				$(".focused").animate({
+					height: $(".focused").height() * 1.5 + "px",
+			    	width:  $(".focused").width()  * 1.5 + "px"
+				});
+
+			}, 400);
+		// }
+	});
+});
+
+// $("div.image").each(function(i, obj){
+
+//     var height = $(obj).height();
+//     var width  = $(obj).width();
+
+//     $(obj).hover( function(e) {
+//     	//console.log("hi");
+
+//     	$(this).animate({
+//     		height: height * 1.5 + "px",
+//             width:  width  * 1.5 + "px"
+//       	}, 200, function(){
+//       		//debugger
+//       	});
+
+//     }, function(e) {
+//     	//console.log("bye");
+//     	$(this).animate({
+//     		height: height + "px",
+//             width:  width  + "px"
+//     	}, 200);
+
+//     });
+// });
+
+</script>
+</body>
+</html>
